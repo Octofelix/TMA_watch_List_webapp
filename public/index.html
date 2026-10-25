@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Seaplane Watch</title>
+  <meta name="theme-color" content="#4a4a4a" />
+  <link rel="icon" href="brand/TMA.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Seaplane" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img id="brandLogo" alt="" hidden />
+      <svg id="brandIcon" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 18.5 13 16l5-9h3l-2.5 8.4L26 14c1.7-.4 3 .4 3 1.5s-1.3 1.9-3 2.3l-7.6 1.6L21 27h-3l-5-6.4-10 1.2z" fill="currentColor"/><path d="M2 29c3 0 3-1.5 6-1.5S11 29 14 29s3-1.5 6-1.5 3 1.5 6 1.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+      <span>Seaplane Watch</span>
+    </div>
+    <a id="who" class="who" href="#profile" hidden>
+      <span id="whoAvatar"></span>
+      <span id="whoName"></span>
+    </a>
+  </header>
+
+  <nav id="nav" class="nav" hidden>
+    <a href="#flights" data-view="flights">Flights</a>
+    <a href="#history" data-view="history">History</a>
+    <a href="#chat" data-view="chat">Chat <span id="chatBadge" class="badge" hidden></span></a>
+    <a href="#profile" data-view="profile">Profile</a>
+    <a href="#admin" data-view="admin" id="adminTab" hidden>Admin</a>
+  </nav>
+
+  <main id="app">
+    <!-- Logged out -->
+    <section id="authView" class="auth" hidden>
+      <div class="hero">
+        <h1>Know the moment your seaplane lands.</h1>
+        <p>Watch any Trans Maldivian Airways arrival, at a resort or a local island. Get a notification on your phone as soon as the aircraft is assigned, departs, approaches and lands.</p>
+      </div>
+      <div class="card authcard">
+        <div class="tabs" role="tablist">
+          <button role="tab" class="tab active" data-tab="login">Log in</button>
+          <button role="tab" class="tab" data-tab="register">Create account</button>
+        </div>
+        <form id="loginForm" class="stack">
+          <label>Username<input name="login" autocomplete="username" required /></label>
+          <label>Password<input name="password" type="password" autocomplete="current-password" required /></label>
+          <button class="primary" type="submit">Log in</button>
+        </form>
+        <form id="registerForm" class="stack" hidden>
+          <label>Your name<input name="name" autocomplete="name" required /></label>
+          <label>Username<input name="username" autocomplete="username" pattern="[A-Za-z0-9._]{3,20}" required />
+            <small>3–20 letters, numbers, dots or underscores. Other users see this in chat.</small></label>
+          <label>Password<input name="password" type="password" autocomplete="new-password" minlength="8" required /></label>
+          <button class="primary" type="submit">Create account</button>
+        </form>
+        <p id="authError" class="error" role="alert"></p>
+      </div>
+    </section>
+
+    <!-- Flights -->
+    <section id="flightsView" hidden>
+      <div class="card notifycard" id="notifyCard" hidden>
+        <div class="notifyicon" aria-hidden="true">🔔</div>
+        <div class="stack tight">
+          <b id="notifyTitle">Get notified on this phone</b>
+          <span class="hint" id="notifyText"></span>
+          <ol class="installsteps" id="iosSteps" hidden>
+            <li>Tap the <b>Share</b> button <span class="shareicon" aria-hidden="true">⬆︎</span> at the bottom of Safari.</li>
+            <li>Choose <b>Add to Home Screen</b>, then <b>Add</b>.</li>
+            <li>Open <b>Seaplane</b> from your Home Screen and switch notifications on there.</li>
+          </ol>
+          <div class="row">
+            <button class="primary" type="button" id="notifyOnBtn" hidden>Turn on notifications</button>
+            <button type="button" id="installBtn" hidden>Install app</button>
+            <button class="link" type="button" id="notifyDismiss">Not now</button>
+          </div>
+          <p class="error" id="notifyError"></p>
+        </div>
+      </div>
+      <details class="card newwatch" id="newWatch" open>
+        <summary><h2>Watch a seaplane</h2></summary>
+        <form id="watchForm" class="grid">
+          <label class="wide">Destination
+            <select name="destination_id" id="destSelect" required></select>
+          </label>
+          <button type="button" id="addPlaceBtn" class="link wide left">+ Not listed? Add a local island or resort</button>
+          <div id="addPlace" class="wide addplace" hidden>
+            <div class="row">
+              <input id="placeQuery" placeholder="Search an island, e.g. Maamigili" />
+              <button type="button" id="placeSearchBtn">Search</button>
+            </div>
+            <ul id="placeResults" class="results"></ul>
+            <p class="hint">Or click the map where the seaplane lands.</p>
+            <div id="placeMap" class="map"></div>
+            <div class="row">
+              <input id="placeName" placeholder="Place name" />
+              <button type="button" id="placeSaveBtn" class="primary" disabled>Add place</button>
+            </div>
+            <p id="placeError" class="error"></p>
+          </div>
+          <label>Flight date<input type="date" name="flight_date" required /></label>
+          <label><span>Expected arrival <span class="opt">(optional)</span></span><input type="time" name="expected_time" /></label>
+          <label class="wide"><span>Label <span class="opt">(optional)</span></span><input name="label" maxlength="60" placeholder="e.g. Guest Smith, Room 214, or booking ref" /></label>
+          <fieldset class="wide notify">
+            <legend>Notify me when…</legend>
+            <div id="notifyChecks" class="checks"></div>
+          </fieldset>
+          <label class="wide switch">
+            <input type="checkbox" name="shared" />
+            <span><b>Share with all users</b><small>Everyone can see this flight, and its notifications go to all users.</small></span>
+          </label>
+          <button class="primary wide" type="submit">Start watching</button>
+          <p id="watchError" class="error wide"></p>
+        </form>
+      </details>
+
+      <div class="listhead">
+        <h2>Watching now</h2>
+        <span id="lastRefresh" class="muted"></span>
+      </div>
+      <div id="watchList" class="watchlist"></div>
+
+      <details class="card outbox" id="outboxBox">
+        <summary><h2>Notification log</h2></summary>
+        <p class="hint">Notifications sent to your devices.</p>
+        <div id="outboxList"></div>
+      </details>
+    </section>
+
+    <!-- History -->
+    <section id="historyView" hidden>
+      <div class="listhead">
+        <h2>Watch history</h2>
+        <div class="filters" id="historyFilters">
+          <button type="button" class="chip active" data-f="all">All</button>
+          <button type="button" class="chip" data-f="mine">Mine</button>
+          <button type="button" class="chip" data-f="shared">Shared</button>
+        </div>
+      </div>
+      <p class="hint">Flights move here when they land, get cancelled, or you stop watching them.</p>
+      <div id="historyList" class="watchlist"></div>
+    </section>
+
+    <!-- Chat -->
+    <section id="chatView" class="chatview" hidden>
+      <div class="card chatcard">
+        <div class="chathead"><h2>Group chat</h2><span class="muted" id="chatCount"></span></div>
+        <div id="chatList" class="chatlist" aria-live="polite"></div>
+        <form id="chatForm" class="chatform">
+          <textarea name="body" rows="1" maxlength="1000" placeholder="Message everyone…" required></textarea>
+          <button class="primary" type="submit" aria-label="Send">Send</button>
+        </form>
+        <p id="chatError" class="error"></p>
+      </div>
+    </section>
+
+    <!-- Profile -->
+    <section id="profileView" hidden>
+      <div class="card profilecard">
+        <div class="avatarrow">
+          <div id="profileAvatar" class="avatar xl"></div>
+          <div class="stack tight">
+            <h2 id="profileTitle"></h2>
+            <span class="muted" id="profileSub"></span>
+            <div class="row">
+              <label class="button small filebtn">Change photo<input type="file" id="avatarInput" accept="image/png,image/jpeg,image/webp" hidden /></label>
+              <button type="button" class="small" id="avatarRemove">Remove</button>
+            </div>
+          </div>
+        </div>
+        <p id="avatarError" class="error"></p>
+      </div>
+
+      <form class="card stack" id="profileForm">
+        <h2>Your details</h2>
+        <label>Name<input name="name" required maxlength="80" /></label>
+        <label>Username<input name="username" required pattern="[A-Za-z0-9._]{3,20}" />
+          <small>3–20 letters, numbers, dots or underscores.</small></label>
+        <label class="switch">
+          <input type="checkbox" name="shared_alerts" />
+          <span><b>Notify me about shared flights</b><small>Get updates for flights other users share with everyone.</small></span>
+        </label>
+        <div class="row"><button class="primary" type="submit">Save details</button><span class="ok" id="profileOk"></span></div>
+        <p class="error" id="profileError"></p>
+      </form>
+
+      <div class="card stack" id="devicesCard">
+        <h2>Notifications</h2>
+        <p id="pushStatus" class="muted"></p>
+        <div class="row">
+          <button class="primary" type="button" id="pushOnBtn" hidden>Turn on for this device</button>
+          <button type="button" id="pushTestBtn" hidden>Send a test notification</button>
+          <button type="button" class="link danger" id="pushOffBtn" hidden>Turn off for this device</button>
+        </div>
+        <ul class="devices" id="deviceList"></ul>
+        <p class="ok" id="pushOk"></p>
+        <p class="error" id="pushError"></p>
+      </div>
+
+      <form class="card stack" id="passwordForm">
+        <h2>Change password</h2>
+        <label>Current password<input name="current" type="password" autocomplete="current-password" required /></label>
+        <label>New password<input name="next" type="password" autocomplete="new-password" minlength="8" required /></label>
+        <label>Repeat new password<input name="repeat" type="password" autocomplete="new-password" minlength="8" required /></label>
+        <div class="row"><button class="primary" type="submit">Change password</button><span class="ok" id="passwordOk"></span></div>
+        <p class="hint">Changing your password logs you out on other devices.</p>
+        <p class="error" id="passwordError"></p>
+      </form>
+
+      <button id="logoutBtn" class="wide-btn">Log out</button>
+    </section>
+
+    <!-- Admin -->
+    <section id="adminView" hidden>
+      <div class="stats" id="adminStats"></div>
+      <div class="card">
+        <div class="listhead tight">
+          <h2>Users</h2>
+          <input id="userSearch" class="search" placeholder="Search name or username" />
+        </div>
+        <div class="tablewrap"><table class="users" id="usersTable"></table></div>
+      </div>
+      <details class="card" id="adminOutboxBox">
+        <summary><h2>All notifications</h2></summary>
+        <div id="adminOutbox"></div>
+      </details>
+      <p class="hint">As admin you can also see, update, stop and delete every user's flights on the Flights and History tabs, and delete any chat message.</p>
+    </section>
+  </main>
+
+  <!-- Admin: edit a user -->
+  <dialog id="userDialog" class="dialog">
+    <form method="dialog" id="userEditForm" class="stack">
+      <div class="avatarrow">
+        <div class="avatar lg" id="editAvatar"></div>
+        <div class="stack tight">
+          <h2 id="editTitle"></h2>
+          <div class="row">
+            <label class="button small filebtn">Change photo<input type="file" id="editAvatarInput" accept="image/png,image/jpeg,image/webp" hidden /></label>
+            <button type="button" class="small" id="editAvatarRemove">Remove</button>
+          </div>
+        </div>
+      </div>
+      <label>Name<input name="name" required /></label>
+      <label>Username<input name="username" required /></label>
+      <div class="row spread devicesrow">
+        <span class="muted" id="editDevices"></span>
+        <button type="button" class="small" id="editTestPush">Send test notification</button>
+      </div>
+      <p class="hint" id="editTestResult"></p>
+      <div class="checks">
+        <label><input type="checkbox" name="shared_alerts" /> Shared-flight notifications</label>
+        <label><input type="checkbox" name="admin" /> Admin</label>
+        <label><input type="checkbox" name="disabled" /> Disabled (can't log in)</label>
+      </div>
+      <label><span>Set a new password <span class="opt">(leave blank to keep)</span></span><input name="password" type="password" autocomplete="new-password" minlength="8" /></label>
+      <p class="error" id="editError"></p>
+      <div class="row spread">
+        <button type="button" class="link danger" id="editDelete">Delete account</button>
+        <div class="row">
+          <button type="button" id="editCancel">Cancel</button>
+          <button type="submit" class="primary" value="save">Save</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <template id="watchTpl">
+    <article class="card watch">
+      <div class="whead">
+        <div class="wtitle">
+          <h3 class="wdest"></h3>
+          <div class="wmeta muted"></div>
+          <div class="wowner"></div>
+        </div>
+        <span class="pill"></span>
+      </div>
+      <ol class="steps">
+        <li data-s="assigned">Assigned</li>
+        <li data-s="departed">Departed</li>
+        <li data-s="approaching">Approaching</li>
+        <li data-s="landed">Landed</li>
+      </ol>
+      <div class="tailbox">
+        <form class="tailform row">
+          <input name="tail" placeholder="Tail code, e.g. 8Q-TMB or 8QTMB" autocapitalize="characters" maxlength="12" required />
+          <button type="submit" class="checkbtn">Check aircraft</button>
+        </form>
+        <p class="hint tailhint">Enter the tail code once TMA confirms which aircraft is flying, with or without the hyphen (Flightradar24 shows it as 8QTMB). It's checked against the aircraft registry and live tracking before you can confirm it.</p>
+        <div class="tailcheck" hidden>
+          <img class="tcphoto" alt="" hidden />
+          <div class="tcbody">
+            <b class="tctitle"></b>
+            <div class="tcdetail"></div>
+            <div class="tclive"></div>
+          </div>
+          <div class="tcactions">
+            <button type="button" class="primary confirmbtn">Confirm aircraft</button>
+          </div>
+        </div>
+      </div>
+      <div class="live"></div>
+      <div class="map wmap" hidden></div>
+      <div class="actions">
+        <button class="small mapbtn" type="button">Show map</button>
+        <span class="muted small-label">Update:</span>
+        <button class="small" data-set="departed" type="button">Departed</button>
+        <button class="small" data-set="approaching" type="button">Approaching</button>
+        <button class="small" data-set="landed" type="button">Landed</button>
+        <button class="small warn" data-set="delayed" type="button">Delayed</button>
+        <button class="small danger" data-set="cancelled" type="button">Cancelled</button>
+      </div>
+      <form class="notebox row" hidden>
+        <input name="detail" maxlength="200" placeholder="Optional note, e.g. new time 16:10" />
+        <button class="primary small" type="submit">Send update</button>
+        <button class="link small" type="button" data-cancel>Cancel</button>
+      </form>
+      <details class="more">
+        <summary>Notifications &amp; history</summary>
+        <div class="checks wnotify"></div>
+        <label class="switch wshare">
+          <input type="checkbox" />
+          <span><b>Shared with all users</b><small>Notifications go to everyone.</small></span>
+        </label>
+        <ul class="timeline"></ul>
+      </details>
+      <div class="footer-actions">
+        <button class="small stop" type="button">Stop watching</button>
+        <button class="small resume" type="button" hidden>Watch again</button>
+        <button class="link danger small del" type="button" hidden>Delete</button>
+      </div>
+      <p class="error werror"></p>
+    </article>
+  </template>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

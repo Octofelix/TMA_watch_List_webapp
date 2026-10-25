@@ -1,0 +1,19 @@
+{
+  "name": "seaplane-watch",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Track Trans Maldivian Airways seaplane arrivals and get WhatsApp status alerts.",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "dev": "node --watch --env-file-if-exists=.env src/server.js",
+    "geocode": "node scripts/geocode.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "express": "^4.22.3",
+    "web-push": "^3.6.7"
+  }
+}

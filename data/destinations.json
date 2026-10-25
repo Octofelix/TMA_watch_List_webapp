@@ -1,0 +1,538 @@
+[
+  {
+    "name": "Velana Seaplane Terminal (Malé)",
+    "island": "Velana International Airport",
+    "atoll": "Kaafu",
+    "type": "base",
+    "lat": 4.19619,
+    "lon": 73.5301
+  },
+  {
+    "name": "LUX* South Ari Atoll",
+    "island": "Dhidhoofinolhu",
+    "atoll": "Alif Dhaal",
+    "type": "resort",
+    "lat": 3.49838,
+    "lon": 72.89558
+  },
+  {
+    "name": "Conrad Maldives Rangali Island",
+    "island": "Rangali",
+    "atoll": "Alif Dhaal",
+    "type": "resort",
+    "lat": 3.61623,
+    "lon": 72.71655
+  },
+  {
+    "name": "Constance Moofushi",
+    "island": "Moofushi",
+    "atoll": "Alif Dhaal",
+    "type": "resort",
+    "lat": 3.88483,
+    "lon": 72.72731
+  },
+  {
+    "name": "Vilamendhoo Island Resort",
+    "island": "Vilamendhoo",
+    "atoll": "Alif Dhaal",
+    "type": "resort",
+    "lat": 3.63381,
+    "lon": 72.95859
+  },
+  {
+    "name": "Lily Beach Resort & Spa",
+    "island": "Huvahendhoo",
+    "atoll": "Alif Dhaal",
+    "type": "resort",
+    "lat": 3.65368,
+    "lon": 72.95397
+  },
+  {
+    "name": "Centara Grand Island Resort",
+    "island": "Machchafushi",
+    "atoll": "Alif Dhaal",
+    "type": "resort",
+    "lat": 3.59372,
+    "lon": 72.88332
+  },
+  {
+    "name": "Diamonds Athuruga",
+    "island": "Athurugau",
+    "atoll": "Alif Dhaal",
+    "type": "resort",
+    "lat": 3.88721,
+    "lon": 72.81632
+  },
+  {
+    "name": "Diamonds Thudufushi",
+    "island": "Thudufushi",
+    "atoll": "Alif Dhaal",
+    "type": "resort",
+    "lat": 3.78623,
+    "lon": 72.73102
+  },
+  {
+    "name": "Mirihi Island Resort",
+    "island": "Mirihi",
+    "atoll": "Alif Dhaal",
+    "type": "resort",
+    "lat": 3.61943,
+    "lon": 72.78023
+  },
+  {
+    "name": "Outrigger Maldives Maafushivaru",
+    "island": "Maafushivaru",
+    "atoll": "Alif Dhaal",
+    "type": "resort",
+    "lat": 3.60792,
+    "lon": 72.90026
+  },
+  {
+    "name": "Kudarah Island Resort",
+    "island": "Kudarah",
+    "atoll": "Alif Dhaal",
+    "type": "resort",
+    "lat": 3.57392,
+    "lon": 72.91069
+  },
+  {
+    "name": "Angaga Island Resort",
+    "island": "Angaga",
+    "atoll": "Alif Dhaal",
+    "type": "resort",
+    "lat": 3.65218,
+    "lon": 72.82204
+  },
+  {
+    "name": "Constance Halaveli",
+    "island": "Halaveli",
+    "atoll": "Alif Alif",
+    "type": "resort",
+    "lat": 4.03852,
+    "lon": 72.91952
+  },
+  {
+    "name": "Kuramathi Maldives",
+    "island": "Kuramathi",
+    "atoll": "Alif Alif",
+    "type": "resort",
+    "lat": 4.26018,
+    "lon": 72.97369
+  },
+  {
+    "name": "Veligandu Maldives",
+    "island": "Veligandu",
+    "atoll": "Alif Alif",
+    "type": "resort",
+    "lat": 4.29852,
+    "lon": 73.01156
+  },
+  {
+    "name": "W Maldives",
+    "island": "Fesdu",
+    "atoll": "Alif Alif",
+    "type": "resort",
+    "lat": 4.00749,
+    "lon": 72.8106
+  },
+  {
+    "name": "Nika Island Resort",
+    "island": "Kudafolhudhoo",
+    "atoll": "Alif Alif",
+    "type": "resort",
+    "lat": 4.18116,
+    "lon": 72.76693
+  },
+  {
+    "name": "Gangehi Island Resort",
+    "island": "Gangehi",
+    "atoll": "Alif Alif",
+    "type": "resort",
+    "lat": 4.22001,
+    "lon": 72.75544
+  },
+  {
+    "name": "Ellaidhoo Maldives by Cinnamon",
+    "island": "Ellaidhoo",
+    "atoll": "Alif Alif",
+    "type": "resort",
+    "lat": 4.00628,
+    "lon": 72.9492
+  },
+  {
+    "name": "Kandolhu Maldives",
+    "island": "Kandolhu",
+    "atoll": "Alif Alif",
+    "type": "resort",
+    "lat": 4.00272,
+    "lon": 72.88172
+  },
+  {
+    "name": "Maayafushi",
+    "island": "Maayafushi",
+    "atoll": "Alif Alif",
+    "type": "resort",
+    "lat": 4.07369,
+    "lon": 72.8877
+  },
+  {
+    "name": "Niyama Private Islands",
+    "island": "Olhuveli",
+    "atoll": "Dhaalu",
+    "type": "resort",
+    "lat": 2.68233,
+    "lon": 72.93469
+  },
+  {
+    "name": "Angsana Velavaru",
+    "island": "Velavaru",
+    "atoll": "Dhaalu",
+    "type": "resort",
+    "lat": 2.97968,
+    "lon": 73.01592
+  },
+  {
+    "name": "The St. Regis Maldives Vommuli",
+    "island": "Vommuli",
+    "atoll": "Dhaalu",
+    "type": "resort",
+    "lat": 2.91136,
+    "lon": 72.86608
+  },
+  {
+    "name": "Sun Siyam Vilu Reef",
+    "island": "Meedhuffushi",
+    "atoll": "Dhaalu",
+    "type": "resort",
+    "lat": 3.00337,
+    "lon": 73.0004
+  },
+  {
+    "name": "Cinnamon Velifushi",
+    "island": "Velifushi",
+    "atoll": "Vaavu",
+    "type": "resort",
+    "lat": 3.49907,
+    "lon": 73.52982
+  },
+  {
+    "name": "Medhufushi Island Resort",
+    "island": "Medhufushi",
+    "atoll": "Meemu",
+    "type": "resort",
+    "lat": 2.88715,
+    "lon": 73.57584
+  },
+  {
+    "name": "Four Seasons Landaa Giraavaru",
+    "island": "Landaa Giraavaru",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.28636,
+    "lon": 73.11208
+  },
+  {
+    "name": "Soneva Fushi",
+    "island": "Kunfunadhoo",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.11259,
+    "lon": 73.07714
+  },
+  {
+    "name": "Anantara Kihavah",
+    "island": "Kihavah Huravalhi",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.29645,
+    "lon": 73.05678
+  },
+  {
+    "name": "Dusit Thani Maldives",
+    "island": "Mudhdhoo",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.20668,
+    "lon": 73.08477
+  },
+  {
+    "name": "Milaidhoo Maldives",
+    "island": "Milaidhoo",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.26711,
+    "lon": 73.12853
+  },
+  {
+    "name": "Amilla Maldives",
+    "island": "Finolhas",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.23368,
+    "lon": 73.11414
+  },
+  {
+    "name": "Kihaa Maldives",
+    "island": "Kihaadhuffaru",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.191,
+    "lon": 73.13227
+  },
+  {
+    "name": "Reethi Beach Resort",
+    "island": "Fonimagoodhoo",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.25518,
+    "lon": 73.16344
+  },
+  {
+    "name": "Royal Island Resort",
+    "island": "Horubadhoo",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.16254,
+    "lon": 73.05321
+  },
+  {
+    "name": "Finolhu Baa Atoll",
+    "island": "Gaavillingili",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.01789,
+    "lon": 72.96034
+  },
+  {
+    "name": "Coco Palm Dhuni Kolhu",
+    "island": "Dhunikolhu",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.03927,
+    "lon": 72.88184
+  },
+  {
+    "name": "Vakkaru Maldives",
+    "island": "Vakkaru",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.13343,
+    "lon": 72.91038
+  },
+  {
+    "name": "The Westin Maldives Miriandhoo",
+    "island": "Miriandhoo",
+    "atoll": "Baa",
+    "type": "resort",
+    "lat": 5.06317,
+    "lon": 73.03125
+  },
+  {
+    "name": "JOALI Maldives",
+    "island": "Muravandhoo",
+    "atoll": "Raa",
+    "type": "resort",
+    "lat": 5.60806,
+    "lon": 72.95263
+  },
+  {
+    "name": "Emerald Maldives",
+    "island": "Fasmendhoo",
+    "atoll": "Raa",
+    "type": "resort",
+    "lat": 5.49419,
+    "lon": 72.88166
+  },
+  {
+    "name": "InterContinental Maldives Maamunagau",
+    "island": "Maamunagau",
+    "atoll": "Raa",
+    "type": "resort",
+    "lat": 5.3615,
+    "lon": 72.92066
+  },
+  {
+    "name": "Kudafushi Resort & Spa",
+    "island": "Kudafushi",
+    "atoll": "Raa",
+    "type": "resort",
+    "lat": 5.51063,
+    "lon": 72.98038
+  },
+  {
+    "name": "Furaveri Island Resort",
+    "island": "Furaveri",
+    "atoll": "Raa",
+    "type": "resort",
+    "lat": 5.44065,
+    "lon": 72.908
+  },
+  {
+    "name": "Emerald Faarufushi",
+    "island": "Faarufushi",
+    "atoll": "Raa",
+    "type": "resort",
+    "lat": 5.76786,
+    "lon": 72.96547
+  },
+  {
+    "name": "Ifuru Island Maldives",
+    "island": "Ifuru",
+    "atoll": "Raa",
+    "type": "resort",
+    "lat": 5.70789,
+    "lon": 73.02392
+  },
+  {
+    "name": "You & Me by Cocoon",
+    "island": "Uthurumaafaru",
+    "atoll": "Raa",
+    "type": "resort",
+    "lat": 5.66988,
+    "lon": 72.84574
+  },
+  {
+    "name": "Hurawalhi Island Resort",
+    "island": "Hurawalhi",
+    "atoll": "Lhaviyani",
+    "type": "resort",
+    "lat": 5.52123,
+    "lon": 73.44179
+  },
+  {
+    "name": "Kudadoo Maldives Private Island",
+    "island": "Kudadoo",
+    "atoll": "Lhaviyani",
+    "type": "resort",
+    "lat": 5.50303,
+    "lon": 73.43374
+  },
+  {
+    "name": "Kanuhura",
+    "island": "Kanuhura",
+    "atoll": "Lhaviyani",
+    "type": "resort",
+    "lat": 5.5325,
+    "lon": 73.50653
+  },
+  {
+    "name": "Cocoon Maldives",
+    "island": "Ookolhufinolhu",
+    "atoll": "Lhaviyani",
+    "type": "resort",
+    "lat": 5.28226,
+    "lon": 73.62334
+  },
+  {
+    "name": "Fushifaru Maldives",
+    "island": "Fushifaru",
+    "atoll": "Lhaviyani",
+    "type": "resort",
+    "lat": 5.49134,
+    "lon": 73.51492
+  },
+  {
+    "name": "Kuredu Island Resort",
+    "island": "Kuredu",
+    "atoll": "Lhaviyani",
+    "type": "resort",
+    "lat": 5.54979,
+    "lon": 73.46634
+  },
+  {
+    "name": "Komandoo Island Resort",
+    "island": "Komandoo",
+    "atoll": "Lhaviyani",
+    "type": "resort",
+    "lat": 5.49339,
+    "lon": 73.4242
+  },
+  {
+    "name": "Palm Beach Island Resort",
+    "island": "Madhiriguraidhoo",
+    "atoll": "Lhaviyani",
+    "type": "resort",
+    "lat": 5.46991,
+    "lon": 73.55957
+  },
+  {
+    "name": "Cheval Blanc Randheli",
+    "island": "Randheli",
+    "atoll": "Noonu",
+    "type": "resort",
+    "lat": 5.69196,
+    "lon": 73.34099
+  },
+  {
+    "name": "Soneva Jani",
+    "island": "Medhufaru",
+    "atoll": "Noonu",
+    "type": "resort",
+    "lat": 5.71375,
+    "lon": 73.41501
+  },
+  {
+    "name": "Velaa Private Island",
+    "island": "Fushivelavaru",
+    "atoll": "Noonu",
+    "type": "resort",
+    "lat": 5.83114,
+    "lon": 73.2094
+  },
+  {
+    "name": "Sun Siyam Iru Fushi",
+    "island": "Medhafushi",
+    "atoll": "Noonu",
+    "type": "resort",
+    "lat": 5.74444,
+    "lon": 73.32417
+  },
+  {
+    "name": "Siyam World",
+    "island": "Dhigurah",
+    "atoll": "Noonu",
+    "type": "resort",
+    "lat": 5.7317,
+    "lon": 73.35966
+  },
+  {
+    "name": "Mövenpick Resort Kuredhivaru",
+    "island": "Kuredhivaru",
+    "atoll": "Noonu",
+    "type": "resort",
+    "lat": 5.87532,
+    "lon": 73.34316
+  },
+  {
+    "name": "Robinson Noonu",
+    "island": "Orivaru",
+    "atoll": "Noonu",
+    "type": "resort",
+    "lat": 5.8021,
+    "lon": 73.29745
+  },
+  {
+    "name": "JW Marriott Maldives",
+    "island": "Vagaru",
+    "atoll": "Shaviyani",
+    "type": "resort",
+    "lat": 6.08948,
+    "lon": 73.20376
+  },
+  {
+    "name": "Fairmont Maldives Sirru Fen Fushi",
+    "island": "Sirru Fen Fushi",
+    "atoll": "Shaviyani",
+    "type": "resort",
+    "lat": 6.28708,
+    "lon": 73.01237
+  },
+  {
+    "name": "Hideaway Beach Resort",
+    "island": "Dhonakulhi",
+    "atoll": "Haa Alif",
+    "type": "resort",
+    "lat": 6.84417,
+    "lon": 73.05044
+  }
+]
